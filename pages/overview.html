@@ -193,31 +193,37 @@
         <article role="main">
           <section id="overview">
 <h1>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h1>
-<section id="fipv">
-<h2>fipv<a class="headerlink" href="#fipv" title="Permalink to this heading">#</a></h2>
 <a class="reference external image-reference" href="https://github.com/eredotpkfr/fipv/actions/workflows/python-package-test.yml"><img alt="Test" src="https://github.com/eredotpkfr/fipv/actions/workflows/python-package-test.yml/badge.svg" /></a>
 <a class="reference external image-reference" href="https://pypi.org/project/fipv/"><img alt="PyPI" src="https://img.shields.io/pypi/v/fipv" /></a>
 <a class="reference external image-reference" href="https://www.erdoganyoksul.com/fipv/"><img alt="Github Pages" src="https://img.shields.io/badge/github-pages-orange.svg" /></a>
 <a class="reference external image-reference" href="https://img.shields.io/pypi/pyversions/fipv"><img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/fipv" /></a>
 <a class="reference external image-reference" href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-informational.svg" /></a>
 <a class="reference external image-reference" href="https://github.com/eredotpkfr/fipv/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/eredotpkfr/fipv?style=social" /></a>
-<p><code class="docutils literal notranslate"><span class="pre">fipv</span></code> (fast ip validator) stands out as a high-speed Python package meticulously built in C language. Essentially, it consolidates core IP address validation functions into a C-based implementation, ensuring unmatched speed compared to alternatives. Following C-based validator functions avaliable on this package:</p>
+<section id="fipv">
+<h2>fipv<a class="headerlink" href="#fipv" title="Permalink to this heading">#</a></h2>
+<p>It stands out as a high-speed Python package meticulously built in C language 🤙 It elegantly consolidates core IP address validation functions into a robust C-based implementation, ensuring unparalleled speed compared to alternatives</p>
+<p>🎯 <strong>Key Features</strong></p>
 <ul class="simple">
-<li><p>ipv4</p></li>
-<li><p>ipv4_cidr</p></li>
-<li><p>ipv6</p></li>
-<li><p>ipv6_cidr</p></li>
+<li><p>🚀 <strong>Efficiency and Performance:</strong> The C-based implementation of <code class="docutils literal notranslate"><span class="pre">fipv</span></code> guarantees exceptional speed and minimal RAM usage, making it a top choice for high-performance IP address validation in Python applications</p></li>
+<li><p>📚 <strong>Simplified Usage:</strong> Explore <a class="reference external" href="https://www.erdoganyoksul.com/fipv/">github pages</a> for easy-to-follow documentation and package references</p></li>
 </ul>
-<p>Can be used on bulk IP data. You can find detailed test benchmark at below. Also see <a class="reference external" href="https://www.erdoganyoksul.com/fipv/">github pages</a> for full package reference and documentation.</p>
+<p>⚡ <strong>Available Validators</strong></p>
+<ul class="simple">
+<li><p>IPv4</p></li>
+<li><p>IPv4 CIDR</p></li>
+<li><p>IPv6</p></li>
+<li><p>IPv6 CIDR</p></li>
+</ul>
 <section id="installation">
 <h3>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">fipv</span></code> can be installed easily with <code class="docutils literal notranslate"><span class="pre">pip3</span></code>. It requires <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3.9+</span></code></p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>fipv
 </pre></div>
 </div>
 </section>
 <section id="usage">
 <h3>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">#</a></h3>
+<section id="basic-validation">
+<h4>Basic Validation<a class="headerlink" href="#basic-validation" title="Permalink to this heading">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fipv</span>
 
 <span class="c1"># Basic C validation functions</span>
@@ -227,22 +233,26 @@
     <span class="n">fipv</span><span class="o">.</span><span class="n">ipv6</span><span class="p">(</span><span class="s2">&quot;::1&quot;</span><span class="p">),</span>
     <span class="n">fipv</span><span class="o">.</span><span class="n">ipv6_cidr</span><span class="p">(</span><span class="s2">&quot;::1/129&quot;</span><span class="p">),</span>
 <span class="p">)</span>
+
+<span class="c1"># Output</span>
+<span class="c1"># True False True False</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="kc">False</span> <span class="kc">True</span> <span class="kc">False</span>
-</pre></div>
-</div>
-<hr/><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fipv</span>
+</section>
+<section id="bulk-validation">
+<h4>Bulk Validation<a class="headerlink" href="#bulk-validation" title="Permalink to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fipv</span>
 
 <span class="c1"># Validate bulk IPv4 data</span>
 <span class="n">ips</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000000</span>
 <span class="n">valids</span> <span class="o">=</span> <span class="p">[</span><span class="n">ip</span> <span class="k">for</span> <span class="n">ip</span> <span class="ow">in</span> <span class="n">ips</span> <span class="k">if</span> <span class="n">fipv</span><span class="o">.</span><span class="n">ipv4</span><span class="p">(</span><span class="n">ip</span><span class="p">)]</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">valids</span><span class="p">))</span>
+
+<span class="c1"># Output</span>
+<span class="c1"># 1000000</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1000000</span>
-</pre></div>
-</div>
+</section>
 </section>
 <section id="test-benchmark-2021-10-07">
 <h3>Test Benchmark (2021-10-07)<a class="headerlink" href="#test-benchmark-2021-10-07" title="Permalink to this heading">#</a></h3>
@@ -571,7 +581,11 @@ Mail - <a class="reference external" href="mailto:erdoganyoksul3&#37;&#52;&#48;g
 <li><a class="reference internal" href="#">Overview</a><ul>
 <li><a class="reference internal" href="#fipv">fipv</a><ul>
 <li><a class="reference internal" href="#installation">Installation</a></li>
-<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#usage">Usage</a><ul>
+<li><a class="reference internal" href="#basic-validation">Basic Validation</a></li>
+<li><a class="reference internal" href="#bulk-validation">Bulk Validation</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#test-benchmark-2021-10-07">Test Benchmark (2021-10-07)</a></li>
 <li><a class="reference internal" href="#contact">Contact</a></li>
 </ul>
